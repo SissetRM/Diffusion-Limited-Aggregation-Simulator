@@ -18,14 +18,14 @@ import dlanalysis as dla
 The following class creates a 2D lattice by generating a particle on a circle
 using a randomly generated angle.
  It then sends this particle on a random walk until it comes in contact with
-the initial particle plotted at the centre at which point it sticks to the
+The initial particle is plotted at the centre, at which point it sticks to the
 initial particle and becomes a part of the lattice.
  Another particle is then introduced and is given a random walk until it comes
 in contact with the lattice, at which point that particle will stop and become
 a part of the lattice.
- This process it repeated for the number N, defined in the previous section.
+ This process is repeated for the number N, defined in the previous section.
  Once all the particles have become a part of the lattice, the result is then
-plotted and the process is then repeated for a 3D lattice in the next section.
+plotted, and the process is repeated for a 3D lattice in the next section.
 '''
 
 
@@ -60,10 +60,10 @@ class Walk2D:
     ###
     def walk(self, i=1):
         """
-        generate particle on circle
+        generate a particle on a circle
         is particle touching another particle function
         Yes:
-            if particle touching circle? increase circle size
+            If a particle touches a circle? increase circle size
             walk for next particle i+1
         No:
             move particle
@@ -91,9 +91,9 @@ class Walk2D:
             # Sets a particle on the circle's circumference.
             temp_x = self.r * np.cos(self.temp_thetas[i])
             temp_y = self.r * np.sin(self.temp_thetas[i])
-            # Sends this particle on a random walk then records the result.
+            # Sends this particle on a random walk, then records the result.
             self.randx[i], self.randy[i] = self.walking(temp_x, temp_y, i)
-            # Resizes the circle if the last point stuck at the circumference.
+            # Resizes the circle if the last point is stuck at the circumference.
             if self.randx[i] ** 2 + self.randy[i] ** 2 == self.r ** 2:
                 self.new_dist()
 
@@ -107,7 +107,7 @@ class Walk2D:
         # resets min_dist to be the radius of the circle.
         min_dist = self.r
         while True:
-            # Exits the above while loop if the min_dist becomes less or equal
+            # Exits the above while loop if the min_dist becomes less than or equal to
             # to 1.
             if min_dist <= 1:
                 break
@@ -142,12 +142,12 @@ class Walk2D:
 
     ###
     # MyPlot creates a figure window and generates the resultant lattice that
-    # has been created onto this figure.
+    # has been created on this figure.
     ###
     def my_plot(self):
         # Creates the figure window.
         plt.figure()
-        # Sets the X and Y axis of the figure.
+        # Sets the X and Y axes of the figure.
         plt.ylim([-self.r * 1.1, self.r * 1.1])
         plt.xlim([-self.r * 1.1, self.r * 1.1])
         # Names the X and Y axis
@@ -167,9 +167,9 @@ class Walk2D:
         print('\nElapsed time = ', repr(end_time - self.start_time))
 
     ###
-    # WriteFile creates a python file called DLA2D_data to be used for
-    # analysis. Here x, y represent the coordinates of the
-    # particles in the lattice and N is the number of particles.
+    # WriteFile creates a Python file called DLA2D_data to be used for
+    # analysis. Here, x and y represent the coordinates of the
+    # particles in the lattice, and N is the number of particles.
     ###
     def write_file(self):
         # Creates a new file.

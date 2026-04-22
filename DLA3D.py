@@ -11,7 +11,7 @@ Student ID: 4270173
 import numpy as np
 import time
 import matplotlib.pyplot as plt
-import DLAnalysis as DLA
+import dlanalysis as dla
 from mpl_toolkits.mplot3d import Axes3D
 ###
 # This starts a timer. Used to calculate how long the code tool to run.
@@ -19,23 +19,23 @@ start_time=time.time()
 # global sets the values "N" and "seed" to be recognisable across all classes.
 global N, seed
 # N is the number of particles the lattice will be made up of.
-N = 10000
+N = 1000
 # seed is used to set the initial conditions in any random functions.
 seed = 0
 
 ###############################################################################
 '''
 The following class creates a 3D lattice by generating a particle on a sphere
-using a randomly generated angles.
+using randomly generated angles.
  It then sends this particle on a random walk until it comes in contact with
-the initial particle plotted at the centre at which point it sticks to the
+The initial particle is plotted at the centre, at which point it sticks to the
 initial particle and becomes a part of the lattice.
  Another particle is then introduced and is given a random walk until it comes
 in contact with the lattice, at which point that particle will stop and become
 a part of the lattice.
- This process it repeated for the number N, defined in the previous section.
+ This process is repeated for the number N, defined in the previous section.
  Once all the particles have become a part of the lattice, the result is then
-plotted and the process is then repeated for a 3D lattice in the next section.
+plotted, and the process is repeated for a 3D lattice in the next section.
 '''
 
 class walk3D():
@@ -60,7 +60,7 @@ class walk3D():
         print('\nSeed selected=',seed)
 
     ###
-    # initwalk generates a array of points representing the locations of the
+    # initwalk generates an array of points representing the locations of the
     # particles in the lattice.
     # It also calls the function used to increase the radius of the circle if
     # the particles
@@ -102,7 +102,7 @@ class walk3D():
     def walking(self,x,y,z):
         mindist = self.r
         while True:
-            # Exits the above while loop if the mindist becomes less or equal
+            # Exits the above while loop if the mindist becomes less than or equal to
             # to 1.
             if mindist<=1:
                 break
@@ -113,12 +113,12 @@ class walk3D():
             # calculates the x, y and z distances from the current particle to
             # all the lattice particles.
             diff = abs(self.randx-x),abs(self.randy-y),abs(self.randz-z)
-            # Turns the coordinates into square distances.
+            # Converts coordinates into squared distances.
             s= diff[0]**2+diff[1]**2+diff[2]**2
             # Finds the minimum of these distances.
             mindist = np.min(s)
             # Reintroduces the particle on the other side of the sphere if
-            # it has wandered outside of the sphere surface.
+            # it has wandered outside of the sphere's surface.
             if mindist>self.r**2:
                 x = int(self.r*np.sin(-self.temp_thetas[self.i])
                         *np.cos(-self.temp_phis[self.i]))
@@ -141,7 +141,7 @@ class walk3D():
 
     ###
     # MyPlot creates a figure window and generates the resultant lattice that
-    # has been created onto this figure.
+    # has been created on this figure.
     ###
     def MyPlot(self):
         # Creates the figure window.
@@ -165,9 +165,9 @@ class walk3D():
         print('\nElapsed time = ',repr(end_time-start_time))
 
     ###
-    # WriteFile creates a python file called DLA2D_data to be used for
-    # analysis. Here x, y represent the corrdinates of the
-    # particles in the latice and N is the number of particles.
+    # WriteFile creates a Python file called DLA2D_data to be used for
+    # analysis. Here, x and y represent the coordinates of the
+    # particles in the lattice, and N is the number of particles.
     ###
     def WriteFile(self):
         # Creates a new file.
@@ -182,7 +182,7 @@ class walk3D():
         f.close()
 
     def analyse(self):
-        DLA.DLAnalysis3D(self)
+        dla.DLAnalysis3D(self)
 
 ###############################################################################
 
@@ -190,6 +190,8 @@ class walk3D():
 # This code will only run the main functions if the file is directly executed.
 # It also allows the DLA module to be imported.
 ###
+
+
 if __name__ == "__main__":
     # Generates a plot of a 3D lattice.
     walk3D(None)

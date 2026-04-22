@@ -13,14 +13,14 @@ import matplotlib.pyplot as plt
 ##############################################################################
 '''
 DLAnalysis2D reads the contents of the file "DLA2D_data.py" and converts the
-data into a useful format. It assignes the data appropreatly to represent the
+data into a useful format. It assigns the data appropriately to represent the
 x and y positions of the particles in a lattice and extracts the size of the
-lattice and the number of particles in the lattice. After this the program will
-calculate all the distnces of the particles from the center, then asks how many
-of these particles are with in a circle of an increasing radius. Once it has
-gathered an array of radi and the number of particles with in the radi, it will
+lattice and the number of particles in the lattice. After this, the program will
+calculate all the distances of the particles from the centre, then ask how many
+of these particles are within a circle of an increasing radius. Once it has
+gathered an array of radi and the number of particles within the radi, it will
 plot the logs of these two arrays along with a line of best fit and will
- display the gradient and the y-intercept in the colsole.
+ display the gradient and the y-intercept in the console.
 '''
 class DLAnalysis2D():
     ###
@@ -64,11 +64,11 @@ class DLAnalysis2D():
         print('x points ='+str(self.x)+'\n')
         print('y points = '+str(self.y))
         print('\n---------------------------\n')
-        # Calculates all the distances the particles are from the center.
+        # Calculates all the distances the particles are from the centre.
         self.s = np.sqrt(self.x**2+self.y**2)
 
     ###
-    # main finds how many particles are with in a certain radius then increases
+    # main finds how many particles are within a certain radius, then increases
     # that radius and repeats the process. It then sends the results to be
     # plotted.
     ###
@@ -77,9 +77,9 @@ class DLAnalysis2D():
         inside_points = np.zeros(self.max_radius)
         # Loops for the whole radius of the lattice.
         for i in range(self.max_radius):
-            # Increases the radius by 1 for each itteration.
+            # Increases the radius by 1 for each iteration.
             r = i+1
-            # Assigns the number of particles with in the radius.
+            # Assigns the number of particles within the radius.
             inside_points[i] = np.size(np.where(self.s<=r))
         # finds the log of the number of particles and radi.
         lgN = np.log(inside_points)
@@ -88,17 +88,17 @@ class DLAnalysis2D():
         self.dataPlot(lgR,lgN)
 
     ###
-    # dataPlot generates a figure to represent the relationship of the number
-    # of particles and the radius of the circle which enclosed them.
+    # dataPlot generates a figure to represent the relationship between the number
+    # of particles and the radius of the circle that encloses them.
     ###
     def dataPlot(self,lgR,lgN):
         # Creates the figure window.
         plt.figure()
-        # Names the X and Y axis and gives the plot a title.
+        # Names the X and Y axes and gives the plot a title.
         plt.xlabel('log(r)')
         plt.ylabel('lof(N)')
         plt.title('DLA 2D Graph of log(N) against log(R)')
-        # Assignes the data appropreate errorbars.
+        # Assign the data appropriate error bars.
         plt.errorbar(lgR,lgN,np.sqrt(2)/8,np.sqrt(2)/8,'.b')
         # Plots the data as a scatter plot.
         plt.scatter(lgR,lgN)
@@ -107,21 +107,21 @@ class DLAnalysis2D():
                    (np.unique(lgR)),'r')
         # Holds values of the gradient and y-intercept of the line of best fit.
         gradient, intercept = np.polyfit(lgR,lgN,1)
-        # Displays the fractal dimention on the figure window.
+        # Displays the fractal dimension on the figure window.
         plt.text(-0.4,max(lgN)*1.05,'Df = %.2f'%gradient)
-        # Displays the fractal dimention for the lattice in the console.
+        # Displays the fractal dimension for the lattice in the console.
         print('df = '+str(gradient)+'\n')
         # Displays the value for the y-intercept in the console
         print('intercept = ', str(intercept))
         # Saves the resultant figure into the same folder as the code.
         plt.savefig('DLA3D_Data_Plot.png')
-        # Assigns the fractal dimention to be a non-local variable.
+        # Assigns the fractal dimension to be a non-local variable.
         self.Df = gradient
 
     ###
-    # writeFile opens a python file called DLA3D_Df to record values for the
-    # fractal dimention for different numbers of partucles. Here self.Df
-    # represents the fractal dimention and N the number of particles.
+    # writeFile opens a Python file called DLA3D_Df to record values for the
+    # fractal dimension for different numbers of particles. Here self. Df
+    # represents the fractal dimension and N the number of particles.
     ###
     def writeFile(self):
         # Adds the new data to a file.
@@ -135,14 +135,14 @@ class DLAnalysis2D():
 ###############################################################################
 '''
 DLAnalysis3D reads the contents of the file "DLA3D_data.py" and converts the
-data into a useful format. It assignes the data appropreatly to represent the
+data into a useful format. It assigns the data appropriately to represent the
 x, y and z positions of the particles in a lattice and extracts the size of the
-lattice and the number of particles in the lattice. After this the program will
-calculate all the distnces of the particles from the center, then asks how many
-of these particles are with in a sphere of an increasing radius. Once it has
-gathered an array of radi and the number of particles with in those radi, it
+lattice and the number of particles in the lattice. After this, the program will
+calculate all the distances of the particles from the centre, then ask how many
+of these particles are within a sphere of an increasing radius. Once it has
+gathered an array of radi and the number of particles within those radi, it
 will plot the logs of these two arrays along with a line of best fit and will
-display the gradient and the y-intercept in the colsole.
+display the gradient and the y-intercept in the console.
 '''
 class DLAnalysis3D():
     ###
@@ -192,11 +192,11 @@ class DLAnalysis3D():
         print('y points = '+str(self.y)+'\n')
         print('z points = '+str(self.z))
         print('\n---------------------------\n')
-        # Calculates all the distances the particles are from the center.
+        # Calculates all the distances the particles are from the centre.
         self.s = np.sqrt(self.x**2+self.y**2+self.z**2)
 
     ###
-    # main finds how many particles are with in a certain radius then increases
+    # main finds how many particles are within a certain radius, then increases
     # that radius and repeats the process. It then sends the results to be
     # plotted.
     ###
@@ -205,9 +205,9 @@ class DLAnalysis3D():
         inside_points = np.zeros(self.max_radius)
         # Loops for the whole radius of the lattice.
         for i in range(self.max_radius):
-            # Increases the radius by 1 for each itteration.
+            # Increases the radius by 1 for each iteration.
             r = i+1
-            # Assigns the number of particles with in the radius.
+            # Assigns the number of particles within the radius.
             inside_points[i] = np.size(np.where(self.s<=r))
         # finds the log of the number of particles and radi.
         lgN = np.log(inside_points)
@@ -217,7 +217,7 @@ class DLAnalysis3D():
 
     ###
     # dataPlot generates a figure to represent the relationship of the number
-    # of particles and the radius of the circle which enclosed them.
+    # of particles and the radius of the circle that encloses them.
     ###
     def dataPlot(self,lgR,lgN):
         # Creates the figure window.
@@ -228,28 +228,28 @@ class DLAnalysis3D():
         plt.title('DLA 3D Graph of log(N) against log(R)')
         # Plots the data as a scatter plot.
         plt.scatter(lgR,lgN)
-        # Assignes the data appropreate errorbars.
+        # Assign the data appropriate error bars.
         plt.errorbar(lgR,lgN,np.sqrt(2)/8,np.sqrt(2)/8,'.b')
         # Creates a line of best fit for the scatter plot.
         plt.plot(np.unique(lgR), np.poly1d(np.polyfit(lgR, lgN, 1))\
                    (np.unique(lgR)),'r')
         # Holds values of the gradient and y-intercept of the line of best fit.
         gradient, intercept = np.polyfit(lgR,lgN,1)
-        # Displays the fractal dimention on the figure window.
+        # Displays the fractal dimension on the figure window.
         plt.text(-0.4,max(lgN)*1.05,'Df = %.2f'%gradient)
-        # Displays the fractal dimention for the lattice in the console.
+        # Displays the fractal dimension for the lattice in the console.
         print('df = '+str(gradient)+'\n')
         # Displays the value for the y-intercept in the console
         print('intercept = ', str(intercept))
         # Saves the resultant figure into the same folder as the code.
         plt.savefig('DLA3D_Data_Plot.png')
-        # Assigns the fractal dimention to be a non-local variable.
+        # Assigns the fractal dimension to be a non-local variable.
         self.Df = gradient
 
     ###
-    # writeFile opens a python file called DLA2D_Df to record values for the
-    # fractal dimention for different numbers of partucles. Here self.Df
-    # represents the fractal dimention and N the number of particles.
+    # writeFile opens a Python file called DLA2D_Df to record values for the
+    # fractal dimension for different numbers of particles. Here self. Df
+    # represents the fractal dimension and N the number of particles.
     ###
     def writeFile(self):
         # Adds the new data to a file.

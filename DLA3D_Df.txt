@@ -1,42 +1,6 @@
-Number of particles = 10000
-Fractal dimention = 1.552799525693048
+Number of particles = 1000
+Fractal dimention = 1.5740996361972919
 
 Number of particles = 1000
-Fractal dimention = 1.4898255916058314
-
-Number of particles = 1000
-Fractal dimention = 1.5882541109792265
-
-Number of particles = 1000
-Fractal dimention = 1.587888765070814
-
-Number of particles = 1000
-Fractal dimention = 1.463029812369117
-
-Number of particles = 5000
-Fractal dimention = 1.5615664274281773
-
-Number of particles = 5000
-Fractal dimention = 1.5297411765934468
-
-Number of particles = 1000
-Fractal dimention = 1.4619792879555005
-
-Number of particles = 1000
-Fractal dimention = 1.620357038282558
-
-Number of particles = 1000
-Fractal dimention = 1.3664836572502994
-
-Number of particles = 1000
-Fractal dimention = 1.4485844717381557
-
-Number of particles = 1000
-Fractal dimention = 1.591603767330167
-
-Number of particles = 1000
-Fractal dimention = 1.6599025829322707
-
-Number of particles = 1000
-Fractal dimention = 1.6204250996191631
+Fractal dimention = 1.475089983103882
 
